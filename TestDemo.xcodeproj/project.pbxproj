@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		567384231BD2005D00888CE6 /* travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 567384221BD2005D00888CE6 /* travis.yml */; settings = {ASSET_TAGS = (); }; };
 		56FEC0771BD1FA47007FA6BE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FEC0761BD1FA47007FA6BE /* main.m */; };
 		56FEC07A1BD1FA47007FA6BE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FEC0791BD1FA47007FA6BE /* AppDelegate.m */; };
 		56FEC07D1BD1FA47007FA6BE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FEC07C1BD1FA47007FA6BE /* ViewController.m */; };
@@ -17,7 +16,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		567384221BD2005D00888CE6 /* travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = travis.yml; sourceTree = "<group>"; };
 		56FEC0721BD1FA47007FA6BE /* TestDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56FEC0761BD1FA47007FA6BE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		56FEC0781BD1FA47007FA6BE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -44,7 +42,6 @@
 		56FEC0691BD1FA46007FA6BE = {
 			isa = PBXGroup;
 			children = (
-				567384221BD2005D00888CE6 /* travis.yml */,
 				56FEC0741BD1FA47007FA6BE /* TestDemo */,
 				56FEC0731BD1FA47007FA6BE /* Products */,
 			);
@@ -142,7 +139,6 @@
 				56FEC0851BD1FA47007FA6BE /* LaunchScreen.storyboard in Resources */,
 				56FEC0821BD1FA47007FA6BE /* Assets.xcassets in Resources */,
 				56FEC0801BD1FA47007FA6BE /* Main.storyboard in Resources */,
-				567384231BD2005D00888CE6 /* travis.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

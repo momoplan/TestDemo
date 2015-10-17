@@ -1,4 +1,7 @@
 language: objective-c
+osx_image: xcode7
+before_install:
+- gem install fir-cli --no-ri --no-rdoc
 # cache: bundler
 # before_script:
 # - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/TravisExample_Ad_Hoc.mobileprovision.enc -d -a -out scripts/profile/TravisExample_Ad_Hoc.mobileprovision

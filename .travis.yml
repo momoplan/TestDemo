@@ -3,13 +3,17 @@ osx_image: xcode7
 before_install:
 - gem install fir-cli --no-ri --no-rdoc
 before_script:
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/TestDemo.mobileprovision.enc -d -a -out scripts/profile/TestDemo.mobileprovision
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a -out scripts/certs/dist.cer
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/TestDemo.mobileprovision.enc
+  -d -a -out scripts/profile/TestDemo.mobileprovision
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a
+  -out scripts/certs/dist.cer
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a
+  -out scripts/certs/dist.p12
 - ./scripts/add-key.sh
 script:
-- xctool -workspace TestDemo.xcodeproj -scheme TestDemo -sdk iphoneos -configuration Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO TESTFLIGHT_APP_TOKEN=$TESTFLIGHT_APP_TOKEN HOCKEY_APP_ID=$HOCKEY_APP_ID
-
+- xctool -workspace TestDemo.xcodeproj -scheme TestDemo -sdk iphoneos -configuration
+  Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO TESTFLIGHT_APP_TOKEN=$TESTFLIGHT_APP_TOKEN
+  HOCKEY_APP_ID=$HOCKEY_APP_ID
 after_success:
 - ./scripts/sign-and-upload.sh
 after_script:
@@ -26,3 +30,4 @@ env:
   - secure: MrT87q4xg1qXMegZtoS2lpgfIgRG6YnGLvr5BEx1YqdOZqQOdxSKhLecpn1CpOW90/rzp1cInw71syoDHiNCiKiWsm1zKTS5QVgGFQTWbCVTs+VUurLRAsxxLd/yoa/FOCQ7ZGIDavOj5H36p+40qewHf9an4+Tmmvtu4xqnVzo=
   - secure: aCef4Nqwnmbqc85exegdNyp2C96McY41Zoo412u8FKCEHR5GIcSqwZ4TeDOyluBUeLHymHpMMIyJlBqSVAWdwUfCBsk2AC3W7APFKhCzvVb+Cz8t4AlEm/uwPUkceFpecLtav+8nw3dq6/3hipr4CjFeR7HGoj/cmvROHUcepMY=
   - secure: dWfqfSkw8RvEjsUXa0alTyTPSdvuzW6vMjWNQOLa6kuBBJVkpKfKuNScHTBmVLfq/cGfyUgmU5xc0szUBwuMeHY2ulLsmFgLa0HKn7peRarbJCS+dtVomRao9n6ZjxCBmAuHD+6/78LyHyk87szuBYhoKzkPNfnHpPHlt2ozQGQ=
+  - secure: MgpOWsVPLkf4eLpgie7FtNDprjj2s9TyRHl9CXz1MxgRr1QUGVXXjCvM1186sQqkq/GLMddY1YZxQN1gwZvHHOwiJHjDu0Hq8CwYhSl149uIMzKTD4vWpxRfiDv7+KMbiRLX0LpUQhJ0quWv3y7bm2lDN0ZqmLHQuik/igsnLGZz4d64V6OlPE+kDosmyIgt/OCMB/8Q+fb5JLD91C0zFMM0Q8O0VA1sjnDtJae3wrQX0+HegSm2sP7BMe6co/l8WXbAnKkQdx3YO/ZNL+TINvfmF4LK2bavJa+AGj5Vn15RiZbLckgTdffGVlWxNAMy2XMQ9qnS4aOTLOYZdmKxC9+v0fQ9uDq3kvCq9bNdNcPtCCmPWqhrEiUF8ev4fhZlJluqpY3K8/WvIXMOKjeXILMK2BQ6VESHWAcBNE2E3hP9Ztn8+SZ+uRDNzUUUpUwlOjfgbK1fwtwSMOHSL5LkiqEMlGDbpO5eXjzUSLPlnLoc6MGTYeGiY2N2HeJ3jFEs9potRLwW/1aisAApdgObgasYGRUwde7QzeNWUi7EFQOYObroVy5jrAMgcmv78FZnsHjc4ktDDyRwYiDBhMZu26D9VOglkdk7zosdAzZblZUoby0Xih6wt3sHz37PZAFIa0DQ1emf/TnZP1lqVq8So6Hz0gtlSA7jQAF4FPp+qsU=

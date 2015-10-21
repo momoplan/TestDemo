@@ -2,13 +2,16 @@ language: objective-c
 osx_image: xcode7
 before_install:
 - gem install fir-cli --no-ri --no-rdoc
+- brew update
+- brew install xctool
 before_script:
 - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/TestDemo.mobileprovision.enc -d -a -out scripts/profile/TestDemo.mobileprovision
 - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a -out scripts/certs/dist.cer
 - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
 - ./scripts/add-key.sh
 script:
-- xctool -workspace TestDemo.xcodeproj -scheme TestDemo -sdk iphoneos -configuration Release
+- xctool -workspace TestDemo.xcodeproj -scheme TestDemo test
+
 after_success:
 - ./scripts/sign-and-upload.sh
 after_script:

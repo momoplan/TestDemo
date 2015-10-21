@@ -2,21 +2,21 @@ language: objective-c
 osx_image: xcode7
 before_install:
 - gem install fir-cli --no-ri --no-rdoc
-before_script:
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/TestDemo.mobileprovision.enc -d -a -out scripts/profile/TestDemo.mobileprovision
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a -out scripts/certs/dist.cer
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
-- ./scripts/add-key.sh
+# before_script:
+# - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/TestDemo.mobileprovision.enc -d -a -out scripts/profile/TestDemo.mobileprovision
+# - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a -out scripts/certs/dist.cer
+# - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
+# - ./scripts/add-key.sh
 script:
-- xcodebuild -project TestDemo.xcodeproj -target TestDemo -sdk iphoneos -configuration Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO
-after_success:
-- ./scripts/sign-and-upload.sh
-after_script:
-- ./scripts/remove-key.sh
-env:
-  global:
-  - APP_NAME="TestDemo"
-  - DEVELOPER_NAME="iPhone Developer:bo zhong"
-  - PROFILE_NAME="TestDemo"
-  - secure: SFO1XETUtxOfOIOkq/MgkMplsdoeEmIDInh3Td+Tl1VhaLM33LjbO2YsL9um7QGVGRmdhQD6wwb0PhYWs9dX5qEQso32OT2NNlgRxWCI5f5mihN6YdlzlbtGQQbi5Z/kgJ4o3WZqAg4hq58DlNzmhi8xH2oSLhcI8rn9GjtYqBH2j9Xn41Np4XEmpxgfRRY5ThxMPbY8/IfY4F+zQ/6/AJpMvD5UWNBq0KmZU9cG+3gM8bo3/YXxyFjmFzPNyeA9/woGXD9FNlX5DaODI8lP9mxVXmhxicmElfyPj1xJkOVNpol05K/gWT+YA4aN14R/LTI5nf+m9X46BSLKw5tw+NQMyqMl+vNQr3UEkSNHREvUxarAdTrNWOlswx74QREb4ZbCwltpXZegOqouDlLo0Q455sVBT6pTpERbJVk7LKWf7aqWNU6qatUEpvnA5xRhe2yIOyShv3wSRnA3911jDCy7+vs1nP8SfJXg/G0mKnL+s+MvgBj/B5J0K0gq+3/0Ugvx+kfm+bFaZXHornqkNqH1eutZ5wXcKSopNcofc60zSXnaJwQvupfskmXaaF7rn0HsGLn1TQM3FRFfrg7QmsngDSC01hMj6TuUztAfYHSXRzhmoY8IuBcla+mNHUyJYYlFJi51I/jfW9lhCwDDKwF5P60SebpXWD3ToMr64sk=
-  - secure: Ds+b8yOcoDa09uHYdT3b04T1FK++K45buaE03YgFQipQPXRDGS718KT8xrcnW0BfAPgCoZKKmkwpbZt3EMS8iYy0CBSld65sgg5tMw+uR6qEZ+9OdprK6unG1NpKvKy9hTlueFoIjShVvFRZQUVo0z1ulqPm0fDSCeHZY724b6TELSpRSNmDMN9fSOcSMEee95SiAZrPrBKVPLl/pXxapbqaTjcC4rK1ke669yb9vKNXkEi2mH2J5hV9O5SUA6TVf96rboLXjzMyXGoWA8yPAEYVZT1i0ZU75Zn8+aeNCQL60718OnRefgmg0jwwPCv0t1c23kGurIwpPnhgJSldcK6o/N3pjT8sCkkeTfFjUPepZiDhvv5DXSJim2DqfmDAUi5Pw940l6OSnlLtbmEMjmkQUWbIAG/JoaztgV91arRyF5Wp7yNaZaFlJQnWbKxqged5yRvt2qYRhfuNYxz5Xoa6eHgixdQ8Q/WpqBRe0pZtBOyPnAPUuANYUJqtp9YGvMxGfmR7YVgpGhhmJMh9LqsMSqn0cam/pkBhhjSEMw+0YqrnuOPI2GHsEbCF66+W3UTSIeqejsU2pAZWuBg3YRd1aR3fuziSRWLclcjMykdlWXkm7YEEssCL5ZTKpaHduJJehsf8V85X3TLA8i6iCPBvepH80TebluEc6ATRhqo=
+- xcodebuild -project TestDemo.xcodeproj -target TestDemo -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+# after_success:
+# - ./scripts/sign-and-upload.sh
+# after_script:
+# - ./scripts/remove-key.sh
+# env:
+#   global:
+#   - APP_NAME="TestDemo"
+#   - DEVELOPER_NAME="iPhone Developer:bo zhong"
+#   - PROFILE_NAME="TestDemo"
+#   - secure: SFO1XETUtxOfOIOkq/MgkMplsdoeEmIDInh3Td+Tl1VhaLM33LjbO2YsL9um7QGVGRmdhQD6wwb0PhYWs9dX5qEQso32OT2NNlgRxWCI5f5mihN6YdlzlbtGQQbi5Z/kgJ4o3WZqAg4hq58DlNzmhi8xH2oSLhcI8rn9GjtYqBH2j9Xn41Np4XEmpxgfRRY5ThxMPbY8/IfY4F+zQ/6/AJpMvD5UWNBq0KmZU9cG+3gM8bo3/YXxyFjmFzPNyeA9/woGXD9FNlX5DaODI8lP9mxVXmhxicmElfyPj1xJkOVNpol05K/gWT+YA4aN14R/LTI5nf+m9X46BSLKw5tw+NQMyqMl+vNQr3UEkSNHREvUxarAdTrNWOlswx74QREb4ZbCwltpXZegOqouDlLo0Q455sVBT6pTpERbJVk7LKWf7aqWNU6qatUEpvnA5xRhe2yIOyShv3wSRnA3911jDCy7+vs1nP8SfJXg/G0mKnL+s+MvgBj/B5J0K0gq+3/0Ugvx+kfm+bFaZXHornqkNqH1eutZ5wXcKSopNcofc60zSXnaJwQvupfskmXaaF7rn0HsGLn1TQM3FRFfrg7QmsngDSC01hMj6TuUztAfYHSXRzhmoY8IuBcla+mNHUyJYYlFJi51I/jfW9lhCwDDKwF5P60SebpXWD3ToMr64sk=
+#   - secure: Ds+b8yOcoDa09uHYdT3b04T1FK++K45buaE03YgFQipQPXRDGS718KT8xrcnW0BfAPgCoZKKmkwpbZt3EMS8iYy0CBSld65sgg5tMw+uR6qEZ+9OdprK6unG1NpKvKy9hTlueFoIjShVvFRZQUVo0z1ulqPm0fDSCeHZY724b6TELSpRSNmDMN9fSOcSMEee95SiAZrPrBKVPLl/pXxapbqaTjcC4rK1ke669yb9vKNXkEi2mH2J5hV9O5SUA6TVf96rboLXjzMyXGoWA8yPAEYVZT1i0ZU75Zn8+aeNCQL60718OnRefgmg0jwwPCv0t1c23kGurIwpPnhgJSldcK6o/N3pjT8sCkkeTfFjUPepZiDhvv5DXSJim2DqfmDAUi5Pw940l6OSnlLtbmEMjmkQUWbIAG/JoaztgV91arRyF5Wp7yNaZaFlJQnWbKxqged5yRvt2qYRhfuNYxz5Xoa6eHgixdQ8Q/WpqBRe0pZtBOyPnAPUuANYUJqtp9YGvMxGfmR7YVgpGhhmJMh9LqsMSqn0cam/pkBhhjSEMw+0YqrnuOPI2GHsEbCF66+W3UTSIeqejsU2pAZWuBg3YRd1aR3fuziSRWLclcjMykdlWXkm7YEEssCL5ZTKpaHduJJehsf8V85X3TLA8i6iCPBvepH80TebluEc6ATRhqo=

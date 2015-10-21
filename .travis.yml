@@ -3,22 +3,21 @@ osx_image: xcode7
 before_install:
 - gem install fir-cli --no-ri --no-rdoc
 before_script:
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/TestDemo.mobileprovision.enc -d -a -out scripts/profile/TestDemo.mobileprovision
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a -out scripts/certs/dist.cer
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/TestDemo.mobileprovision.enc
+  -d -a -out scripts/profile/TestDemo.mobileprovision
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a
+  -out scripts/certs/dist.cer
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a
+  -out scripts/certs/dist.p12
 - ./scripts/add-key.sh
 script:
-# - xcodebuild -project TestDemo.xcodeproj -target TestDemo -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-- xctool -project TestDemo.xcodeproj -scheme TestDemo -sdk iphoneos -configuration Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO 'CODE_SIGN_RESOURCE_RULES_PATH=$(SDKROOT)/ResourceRules.plist'
-# - xctool -project TestDemo.xcodeproj -scheme TestDemo -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+- xctool -project TestDemo.xcodeproj -scheme TestDemo -sdk iphoneos -configuration
+  Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO 'CODE_SIGN_RESOURCE_RULES_PATH=$(SDKROOT)/ResourceRules.plist'
 after_success:
 - ./scripts/sign-and-upload.sh
 after_script:
 - ./scripts/remove-key.sh
-# env:
-#   global:
-#   - APP_NAME="TestDemo"
-#   - DEVELOPER_NAME="iPhone Developer:bo zhong"
-#   - PROFILE_NAME="TestDemo"
-#   - secure: SFO1XETUtxOfOIOkq/MgkMplsdoeEmIDInh3Td+Tl1VhaLM33LjbO2YsL9um7QGVGRmdhQD6wwb0PhYWs9dX5qEQso32OT2NNlgRxWCI5f5mihN6YdlzlbtGQQbi5Z/kgJ4o3WZqAg4hq58DlNzmhi8xH2oSLhcI8rn9GjtYqBH2j9Xn41Np4XEmpxgfRRY5ThxMPbY8/IfY4F+zQ/6/AJpMvD5UWNBq0KmZU9cG+3gM8bo3/YXxyFjmFzPNyeA9/woGXD9FNlX5DaODI8lP9mxVXmhxicmElfyPj1xJkOVNpol05K/gWT+YA4aN14R/LTI5nf+m9X46BSLKw5tw+NQMyqMl+vNQr3UEkSNHREvUxarAdTrNWOlswx74QREb4ZbCwltpXZegOqouDlLo0Q455sVBT6pTpERbJVk7LKWf7aqWNU6qatUEpvnA5xRhe2yIOyShv3wSRnA3911jDCy7+vs1nP8SfJXg/G0mKnL+s+MvgBj/B5J0K0gq+3/0Ugvx+kfm+bFaZXHornqkNqH1eutZ5wXcKSopNcofc60zSXnaJwQvupfskmXaaF7rn0HsGLn1TQM3FRFfrg7QmsngDSC01hMj6TuUztAfYHSXRzhmoY8IuBcla+mNHUyJYYlFJi51I/jfW9lhCwDDKwF5P60SebpXWD3ToMr64sk=
-#   - secure: Ds+b8yOcoDa09uHYdT3b04T1FK++K45buaE03YgFQipQPXRDGS718KT8xrcnW0BfAPgCoZKKmkwpbZt3EMS8iYy0CBSld65sgg5tMw+uR6qEZ+9OdprK6unG1NpKvKy9hTlueFoIjShVvFRZQUVo0z1ulqPm0fDSCeHZY724b6TELSpRSNmDMN9fSOcSMEee95SiAZrPrBKVPLl/pXxapbqaTjcC4rK1ke669yb9vKNXkEi2mH2J5hV9O5SUA6TVf96rboLXjzMyXGoWA8yPAEYVZT1i0ZU75Zn8+aeNCQL60718OnRefgmg0jwwPCv0t1c23kGurIwpPnhgJSldcK6o/N3pjT8sCkkeTfFjUPepZiDhvv5DXSJim2DqfmDAUi5Pw940l6OSnlLtbmEMjmkQUWbIAG/JoaztgV91arRyF5Wp7yNaZaFlJQnWbKxqged5yRvt2qYRhfuNYxz5Xoa6eHgixdQ8Q/WpqBRe0pZtBOyPnAPUuANYUJqtp9YGvMxGfmR7YVgpGhhmJMh9LqsMSqn0cam/pkBhhjSEMw+0YqrnuOPI2GHsEbCF66+W3UTSIeqejsU2pAZWuBg3YRd1aR3fuziSRWLclcjMykdlWXkm7YEEssCL5ZTKpaHduJJehsf8V85X3TLA8i6iCPBvepH80TebluEc6ATRhqo=
+env:
+  global:
+  - secure: mgx3mZNNy0OzE1Fhm/yfVXhQkl5wDvh/PjJLa5KmM7TGKQwJvC022WuqPAlgiIwG0ME+LGEoBGcJtWyFhPntHxhsUl0+h2ZfP3flSSY76e48pfFkmBOZKoWTaUrjbgShrLYFZog9Ayv0RH1zTg3fSedmv5N9/cCwWUP0b680f5/oFbkUyeBIsHOFnLzgdILlm6U3eWPuqRnvBCgzENapBXSbaRzZVJS/I03F2DX3nTrNq7XfB7iiy/oH6McpABmVQlWDgs3N/+3uxdIU2FE9fWKnwSLh/3XtBuzIxsBZL7vYlKFa7lKu7muZe9/zoaq6x2e55rVKYHcu8ejG5JVfgViXllX++fqTRbFabMnmEFCLJBHy196VByCxoCdoWc3lpa+FBNxEYq6pnJlLBW5HekOupNDLW/cf3j0cA8DeH/j67o9oUEk1tTDRa9wTN7FPZWAQ+JqoXpSwyAkVFfw4M5wY0B0d+kiB6xuQJSXR0LA8rmN+ZzS7QIATl81vp46rBx8sji2jfWa3PvxpOIuRjLR2Sx5XHfnqikGA/2B+DJA71ioasdtRf5axl8I6woxHEnkOsyVGqMFHtK/kNkIFlg22TEL16MDKG4XIvcYzuOfbO+3nkOeopqCoOmI28aCb4PRvokmR/G4abJq2BJZvyqFGu9Vgob05U3u0KYy1uY0=
+  - secure: rGi0+ro6z/W22Y8BkI4rWgPzy4zvRe9WyHvPzY9tPc8q0xLxYhhQp2zoqBWVqxhukkKUfAST9vQv+UxdugPleA3YmGj/MNCm2aBJHnTvRuOYcyZ7QmBDxdGFTGPNy2QqqiRyT6jM9gzOuOB8WF2001rXmgQzKQK98+eJlFq7bu8dlvDKag37Rs+D4T9+gS5RF9UWHXYy3YuwVgzeXwy5nqnyHitl7wacEH138ioC4A2YizFPHyZ7TZu7oCC6vgKg62btFP5FckUTKE2MtYpnMIAP+SpOvpuwzvN6TBUb8ZhuzoY2ZC03p5F/jpc/EFs4zPLw4kht0QC9NxUseHCL+Jlo5dfmvhTaJIl2lbbvdmIwL2RQHTJyrHcMVeHx3uKH+dRzzmQGL642lus4Qv/wyI2c7qiCaOgrN8ekR0S6Y7uoIkWtu06FXfRDWjoCK85sHvNzlHeXRUZsdkagBvDNCJJ3QDgVqz7nH4+4r692TXj6psds60HsFHudDSBwq0JRYKZrOtHaJr8Dg9Erc+wjqZFb5evUAi3ZaL3JiTxc2F78BMn4qzzH+x4jFS0JgckhpzJMYRPo5lf8LoTPPZUCddgNze/95UEJjNiZimbzbF/X92tBKqcaG9vNM8VVCnq9n/LmoQzrRBpkFroU+/p+nZ9uB5G81hLotpuNvJ/F+0U=

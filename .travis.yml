@@ -8,7 +8,7 @@ before_script:
 - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
 - ./scripts/add-key.sh
 script:
-- xctool -workspace TestDemo.xcodeproj -scheme TestDemo -sdk iphoneos -configuration Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO TESTFLIGHT_APP_TOKEN=$TESTFLIGHT_APP_TOKEN HOCKEY_APP_ID=$HOCKEY_APP_ID
+- xctool -workspace TestDemo.xcodeproj -scheme TestDemo -sdk iphoneos -configuration Release
 after_success:
 - ./scripts/sign-and-upload.sh
 after_script:

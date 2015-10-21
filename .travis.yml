@@ -17,7 +17,7 @@ after_script:
 env:
   global:
   - APP_NAME="TestDemo"
-  - 'DEVELOPER_NAME="iPhone Distribution: Mattes Groeger"'
+  - 'DEVELOPER_NAME="iPhone Distribution: bo zhong"'
   - PROFILE_NAME="TestDemo"
   - secure: JKux0mDIyS8HyBE37WWqz+HXjEFOx6ZtocfXj+W6GIuysS9o8bIleGupQ6DFbG3r8zKHuY1U+NdJRmRs6cWSZ6XaSTMw0eWtxGlTXR4S6v5TilUYppKZZyVsIJOPF0TTk9LzDMhmC2gnKs3+GXqYdHzDnyDRWZM63u4MvSVbKP8=
   - secure: TSCkFLq9w0LllxSv52XOQoBLYOG6VSdfi1DpSRNnRdv70wbxmrCK1vBlUZ/12GZcvif5Ct8eAIirdFUBFgh6pGbzm0oUMElEO9vN8tBtTHcxnjgGKUt8AzPk4xjA13xLK7IiZ/IlWHOWknlYeu4g93zr73b47z32J7p3EznlHwk=

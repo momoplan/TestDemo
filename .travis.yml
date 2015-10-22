@@ -3,7 +3,7 @@ osx_image: xcode7
 before_install:
 - gem install fir-cli --no-ri --no-rdoc
 before_script:
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/TestDemo.mobileprovision.enc -d -a -out scripts/profile/TestDemo.mobileprovision
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/XC_Ad_Hoc_comlivinggame.mobileprovision.enc -d -a -out scripts/profile/XC_Ad_Hoc_comlivinggame.mobileprovision
 - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a -out scripts/certs/dist.cer
 - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
 - ./scripts/add-key.sh
@@ -16,5 +16,5 @@ after_script:
 env:
   global:
   - APP_NAME="TestDemo"
-  - DEVELOPER_NAME="iPhone Developer: bo zhong"
-  - PROFILE_NAME="TestDemo"
+  - DEVELOPER_NAME="iPhone Distribution: moyou technology co., LTD (W5P65H2M57)"
+  - PROFILE_NAME="XC_Ad_Hoc_comlivinggame"

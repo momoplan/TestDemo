@@ -256,7 +256,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: bo zhong (RUN444LG9H)";
 				INFOPLIST_FILE = TestDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.simple.test.TestDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.living.game;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -268,7 +268,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: bo zhong (RUN444LG9H)";
 				INFOPLIST_FILE = TestDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.simple.test.TestDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.living.game;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

@@ -17,12 +17,13 @@ security default-keychain -s $KEY_CHAIN
 security unlock-keychain -p travis $KEY_CHAIN
 # Set keychain locking timeout to 3600 seconds
 security set-keychain-settings -t 3600 -u $KEY_CHAIN
-
+security import ./scripts/certs/apple.cer -k ~/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
+security import ./scripts/certs/dist.cer -k ~/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
 # Add certificates to keychain and allow codesign to access them
-security import ./scripts/certs/dist.cer -k $KEY_CHAIN -T /usr/bin/codesign
+# security import ./scripts/certs/dist.cer -k $KEY_CHAIN -T /usr/bin/codesign
 # security import ./scripts/certs/dev.cer -k $KEY_CHAIN -T /usr/bin/codesign
 
-security import ./scripts/certs/dist.p12 -k $KEY_CHAIN -P $KEY_PASSWORD  -T /usr/bin/codesign
+# security import ./scripts/certs/dist.p12 -k $KEY_CHAIN -P $KEY_PASSWORD  -T /usr/bin/codesign
 # security import ./scripts/certs/dev.p12 -k $KEY_CHAIN -P $KEY_PASSWORD  -T /usr/bin/codesign
 
 echo "list keychains: "

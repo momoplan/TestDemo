@@ -7,8 +7,9 @@ if [[ "$TRAVIS_BRANCH" != "master" ]]; then
   exit 0
 fi
 PROVISIONING_PROFILE="$HOME/Library/MobileDevice/Provisioning Profiles/$PROFILE_NAME.mobileprovision"
-OUTPUTDIR="$PWD/build/Debug-iphoneos"
-
+# OUTPUTDIR="$PWD/build/Debug-iphoneos"
+OUTPUTDIR="/Users/travis/Library/Developer/Xcode/DerivedData/TestDemo-cymahizhpwfjotbqgkgqicgcdjvy/Build/Products/Debug-iphoneos"
+# /Users/travis/Library/Developer/Xcode/DerivedData/TestDemo-cymahizhpwfjotbqgkgqicgcdjvy/Build/Products/Debug-iphoneos/TestDemo.app
 echo "***************************"
 echo "*        Signing          *"
 echo "***************************"

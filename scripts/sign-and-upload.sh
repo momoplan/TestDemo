@@ -12,8 +12,8 @@ OUTPUTDIR="$PWD/build/Debug-iphoneos"
 echo "***************************"
 echo "*        Signing          *"
 echo "***************************"
-xcrun -log -sdk iphoneos PackageApplication "$OUTPUTDIR/$APP_NAME.app" -o "$OUTPUTDIR/$APP_NAME.ipa" -sign "$DEVELOPER_NAME" -embed "$PROVISIONING_PROFILE"
-
+# xcrun -log -sdk iphoneos PackageApplication "$OUTPUTDIR/$APP_NAME.app" -o "$OUTPUTDIR/$APP_NAME.ipa" -sign "$DEVELOPER_NAME" -embed "$PROVISIONING_PROFILE"
+xcrun -sdk iphoneos PackageApplication -v "$OUTPUTDIR/$APP_NAME.app" -o "$OUTPUTDIR/$APP_NAME.ipa" --sign "$DEVELOPER_NAME" --embed "$PROVISIONING_PROFILE"  > codeSign.log
 curl -F file="@$OUTPUTDIR/$APP_NAME.ipa" \
 -F "uKey=$PGYER_UKEY\
 -F "_api_key=$PGYER_APIKEY" \

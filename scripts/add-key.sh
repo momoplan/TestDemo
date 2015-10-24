@@ -37,4 +37,4 @@ echo " ****** "
 mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
 
 # cp "./scripts/profiles/iOSTeam_Provisioning_Profile_.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/
-cp "./scripts/profiles/DISTRIBUTION_PROFILE_NAME.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/
+cp "./scripts/profiles/$PROFILE_NAME.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/

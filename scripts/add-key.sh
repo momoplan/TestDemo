@@ -19,6 +19,7 @@ security unlock-keychain -p travis $KEY_CHAIN
 security set-keychain-settings -t 3600 -u $KEY_CHAIN
 security import ./scripts/certs/apple.cer -k /Users/travis/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
 security import ./scripts/certs/dist.cer -k /Users/travis/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
+security import ./scripts/certs/dist.p12 -k /Users/travis/Library/Keychains/ios-build.keychain -P $KEY_PASSWORD -T /usr/bin/codesign
 # Add certificates to keychain and allow codesign to access them
 # security import ./scripts/certs/dist.cer -k $KEY_CHAIN -T /usr/bin/codesign
 # security import ./scripts/certs/dev.cer -k $KEY_CHAIN -T /usr/bin/codesign

@@ -3,15 +3,20 @@ osx_image: xcode7
 before_install:
 - gem install fir-cli --no-ri --no-rdoc
 before_script:
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/TestDemo.mobileprovision.enc -d -a -out scripts/profile/TestDemo.mobileprovision
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a -out scripts/certs/dist.cer
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/TestDemo.mobileprovision.enc
+  -d -a -out scripts/profile/TestDemo.mobileprovision
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a
+  -out scripts/certs/dist.cer
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a
+  -out scripts/certs/dist.p12
 - ./scripts/add-key.sh
 script:
-- xctool -project TestDemo.xcodeproj -scheme TestDemo -sdk iphoneos -configuration Debug OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO 'CODE_SIGN_RESOURCE_RULES_PATH=$(SDKROOT)/ResourceRules.plist'
+- xctool -project TestDemo.xcodeproj -scheme TestDemo -sdk iphoneos -configuration
+  Debug OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO 'CODE_SIGN_RESOURCE_RULES_PATH=$(SDKROOT)/ResourceRules.plist'
 env:
   global:
   - APP_NAME="TestDemo"
   - DEVELOPER_NAME="iPhone Developer: bo zhong (RUN444LG9H)"
   - PROFILE_NAME="TestDemo"
- 
+  - secure: C3b5GtxAUGquzGAwgdYZgmciAhJfiN5AM2UwqAKYxmxhMpXyK5UwB5+h3m8c4iUa8/sFSZ3XXQbTDhkdMSDKYfsjYB8CdiCQqntHfUfC1wK4Z179qmbEC68TgaT9InKVtRP8amwQuIeAAdGtU4WE/iIfsxcbu2IscoIY1U3HhhGJXLh9qZattjsXskIHHxoQy5TBhni0t7bkFHOYkLExFynhOi2TXWSE4H32/LyDBZpF2wTHzILoW8yGVFwDNLeIxCt50oLzVoecGYDseSrQwTYDXupDUJHmpm9LITX2xhaONhs5eldNEiPniq1X1KwYzneGY0rpXOc4vSQnonaXguiwfDWWup/aqOD9kWvIVEdRuLHBl+iAM6RvSZ5zjbvgmFLGlDD3UGP5Hb26JOyZ3KXp9O11uFXfxJa3aQeU68CcSxxDoRFHCiwFan3BFEtQV8ZhDLdCIZL1LfbELud7Gc7HaeVwsXGUHB++ckW0pQE2CXeo12pu5P39z1lY8EkyPfLr2wAw438/azAQ0sV6ofOXkXNsLtYyB39Ga5ogeC6l0HSjMyy40F0usjBDOZbjeE+aQ1P3lMmhiGycmBgc9aAXctW/hFlT0NwfwS/gEzJI4oZuEAK0Xrkp56WCCoS3dm6p+At8vJ2nvA+sQik5oi1B+Ps2HWH1wtZlCheT7/0=
+  - secure: HxQQzn2+mGjAVwhSaIaKXB6j4B2ALZPYtqD8iqd6//J7qPrKT8rN7FhLnQEJ8uBlnbX0oZinWCXWPu5P9fIDKrdSFVmJxYKwA28AI6PudnRzhyKT4pAc23W2LHFpuq6ipugxOFENdQtaoyg/0lb+qrZU0Dcz4deKrUhQxPuAmwPYt33AG8GhTOisFtY7BOrDcbgtYW3xL+WqJrSraAQY10rMn8O+0Cs2xO2tB5lQ/JsKDGbMCfD1it3O7zTInZ0srzP6eDM9nA89qYMhsiSh2jv9+E7kM5KNJHoqZdICIYL6lU8rOEX/nyCTm2DltvNBNj1v0lLYv6O2ZxeYpJax5Us73F1TAgofuq0b2VQnp87FpqvheYnhE+dU66557iXahy82h4jB5vF0jytZ6bNab/S2eGnjWDd7s+foDLr4XkHQMnomAGVhMh81H8N3O92VONJZqLchYROa6rp0h7UnpDStuE4/vTNZ+nm+cFbn5MXBnV0d0YO8lz+d3iBai3fy9wgkA4qu/7USl66DlEpyqWdPhsw1/kgcMA6KowKX/Kvcgziapciz+olDZVRhENdmAHXTe5leFzOjvyt4PZebG0qzXIXiQ7wfxFqLmeQHTrno38E3GcWbVrqs+Rk1+aH7COLmNeGiCTGgfUedGfo6g3v6UfP7xQxbO2VgSJHyH8o=

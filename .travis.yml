@@ -3,7 +3,7 @@ osx_image: xcode7
 before_install:
 - gem install fir-cli --no-ri --no-rdoc
 before_script:
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/XC_Ad_Hoc_comlivinggame.mobileprovision.enc -d -a -out scripts/profile/XC_Ad_Hoc_comlivinggame.mobileprovision
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/TestDemo.mobileprovision.enc -d -a -out scripts/profile/TestDemo.mobileprovision
 - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a -out scripts/certs/dist.cer
 - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
 - ./scripts/add-key.sh
@@ -12,7 +12,6 @@ script:
 env:
   global:
   - APP_NAME="TestDemo"
-  - DEVELOPER_NAME="iOS Developer: bo zhong (moyou technology co., LTD)"
-  - PROFILE_NAME="XC_Ad_Hoc_comlivinggame"
-  - secure: tNwqpEkENmngFA/QeCROkEuhElLHWLH1zXj+SCugA6bYHs5XZju2s1QPqvqMQkFvCfCMKCwzZzm3edopwwJtFAr5d01z/cnToRPOrlsVD0e52yP083UJxDAb/RPqijD658+OEppbvmJ9yAmE4ll0Vauwv5BP4eFK1fREep+zmboV7ASd37F+C/cEDUSxAkCtBCKp2zY6Gmm8WxPW2nVtzLryHBbpmt8zU9xSpK6Gv3bbLOoENbXSLjPyhjdhp9DKNrff5puyEC6TDLnubnQLfBz6CqZBtXp2oFldqmQedxC6Yk2RyshthPuPVz3gFxG0YJspmO3mrkNlEasZu/dNGWDqZB6gv7ZTrtRMobsACcwSBwA4H8kGs4LVKZUNyZc6h+cBtZaDDWNcMJ3neUN1f5zl3RRlkTGtIFgmJWzyIuIVBgSFUHPF7JUUywtvdfscmAu8tfQwHWL3CJUy7qSrzTo1AfsC9k57QGUfNENhP9TUzIq/jNMGuwf1r1NBSYgjXrXFvm141rRulyLdtEMrk+Pv7dtpq8ydC21je6+NjgUSAE6tX3n5KBFkvqM92qKFGyQRVwxX9V9X3Uxt7EF8/3kyQRee6uNHmjf0SzZSoUNSUKNGbe7KgWDJ2ASaEiIuJWKaAAnHhb9IOTJ9qC8YWLi/pmVAv7hRg0F5AkIMSNc=
-  - secure: ljPalPkhboXU/Mh+xFOujTLx9+6pjSEzkV9nb2AR14j+rYN4ug5rr7MIJJKlUQSx/hqXu9kXD6b0UJTVddtI7SFm/7X/p2jhJOIa456q3ao1nZ3YKr6nbbUJdmCB5Qnf2kqmmlSrh9s5Sktn3HBEfK1HnW3Oh9DZNOkWuLuugJX8NDFjAE1nKeX48Axv+URX4vSMXAGtP0f2IzftUa9Q8gU8yuKuKn1daB9SVjWvUXeT9DjaRRMw3SUTBOzlH1b9aRKCK6yr6n30JeOOWz9xrpMmIUu06AErj65Si4CPQF1WUgCXZ9BduOrHEGLR70TOszNOVLRwO9AC60FajVklSgf7fPY5+0Gh54EWu5qlFyit6Ts7b2f68WohS1uXZqgQyOl9Pdd0yQTvbRLPpHPvdNKzu/n2yunNzpgtT+i7xPXYtZJsdMIGDRimA4MJWldr/r6GmssO0o6zQAsUjqlwBh1LDOL42PlmBtugDjx3JNZjw1bB2NOzrNRir09oUcaiP5O936hRhDszVHdxIqY/lhLbAmHKEYgf0xTeCeUtGda2AvBt9ZX7TvO42EnHGEenYeEEz2HtzJGKKIac6ldFPjqqrgSbUbavIne3jubebXyIvWuzj223mb10GmPnuC6iQMd4GpP6W0njEglgXf4FRbyD7F2mn63xOjmRfgeVn4s=
+  - DEVELOPER_NAME="iPhone Developer: bo zhong (RUN444LG9H)"
+  - PROFILE_NAME="TestDemo"
+ 

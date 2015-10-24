@@ -15,8 +15,8 @@ echo "***************************"
 xcrun -log -sdk iphoneos PackageApplication "$OUTPUTDIR/$APP_NAME.app" -o "$OUTPUTDIR/$APP_NAME.ipa" -sign "$DEVELOPER_NAME" -embed "$PROVISIONING_PROFILE"
 
 curl -F file="@$OUTPUTDIR/$APP_NAME.ipa" \
--F “uKey=$PGYER_UKEY\
--F “_api_key=$PGYER_APIKEY” \
+-F "uKey=$PGYER_UKEY\
+-F "_api_key=$PGYER_APIKEY" \
 http://www.pgyer.com/apiv1/app/upload
 
 RELEASE_DATE=`date '+%Y-%m-%d %H:%M:%S'`
